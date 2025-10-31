@@ -57,10 +57,7 @@ app.use((req, res) => {
 const PORT = process.env.PORT || 5000;
 const MONGODB_URI = process.env.MONGODB_URI;
 
-mongoose.connect(MONGODB_URI, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-})
+mongoose.connect(MONGODB_URI)
 .then(() => {
   console.log('✅ MongoDB Connected Successfully');
   
@@ -69,7 +66,7 @@ mongoose.connect(MONGODB_URI, {
   console.log('✅ Reminder Scheduler Started');
   
   // Start server
-  app.listen(PORT, () => {
+  app.listen(PORT, '0.0.0.0', () => {
     console.log(`🚀 Server running on port ${PORT}`);
     console.log(`📍 Environment: ${process.env.NODE_ENV}`);
   });
